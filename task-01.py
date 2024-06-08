@@ -47,6 +47,8 @@ class Review:
         self.first_name = first_name
         self.last_name = last_name
         self.id = uuid.uuid1()
+        self.created_at = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
         Review.feedback_count += 1
 
 
@@ -61,6 +63,13 @@ class Review:
         my_dict.update({'feedback': feedback })
         return my_dict
 
+    def update_feedback(self, ratings=0.0, feedback="" ):
+        self.updated_at = datetime.datetime.today()
+        my_dict = {}
+        my_dict.update({'rating': ratings})
+        my_dict.update({'feedback': feedback })
+        return my_dict
+    
 # Testing objects
 
 my_user = User(status="reviewer", email="my_email@mail.com", password="1234", first_name="Sofiane", last_name="Slimane")
