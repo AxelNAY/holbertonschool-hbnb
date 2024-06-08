@@ -10,7 +10,8 @@ class Country:
         self.country_name = country_name
 
 class City(Country):
-    def __init__(self, city_name=""):
+    def __init__(self, city_name="", country_name=""):
+        super().__init__(country_name=country_name)
         self.city_name = city_name
         self.created_at = datetime.datetime.today()
         self.updated_at = datetime.datetime.today()
@@ -61,7 +62,7 @@ class Review:
 class Place(Amneties, City):
 
 
-    def __init__(self, name="", description="", adress="", latitude=0, longitude=0, host=[None], rooms=0,
+    def __init__(self, name="", description="", adress="", latitude=0, longitude=0, host=None, rooms=0,
                  bathrooms=0, price_night=0, guest_capacity=0):
         #super().__init__(amneties=["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"])
         self.name = name
@@ -77,6 +78,7 @@ class Place(Amneties, City):
         self.created_at = datetime.datetime.today()
         self.updated_at = datetime.datetime.today()
         self.id = uuid.uuid1()
+        
 
 
 
@@ -162,9 +164,25 @@ my_host = Host(email="my_mail@mail.mail", password="ABCD", first_name="Sofiane",
 my_place = Place("HBNB", "Appartment", "5 random street", 0.0, 0.0, my_host, 5, 2, 150, 10)
 my_host.add_places(my_place.name)
 print(my_host.places_owned)
+print(my_place.host)
 
 #2. Testing user adding new amneties
 print("My host amneties before: ", my_host.amneties)
 my_host.update_amneties(["Phone", "Parking"])
 print("My host amneties after: ", my_host.amneties)
 
+#3 Testing user writing reviews
+print("My host's review: ", my_host.new_feedback(5.5, "The place has no wifi"))
+
+#4 Testing if created_at/updated_at attributes are created
+new_user = User(first_name="Sofiane")
+print(new_user.created_at)
+print(new_user.first_name)
+new_user.update_user({'first_name': 'Joel'})
+print(new_user.first_name)
+print(new_user.updated_at)
+
+#5 testing relationships between classes
+Bordeaux = City("Bordeaux", "France")
+
+print(Bordeaux.country_name)
