@@ -5,10 +5,9 @@ import datetime
 
 class User:
     user_count = 0
-    def __init__(self, name="", host=False, reviewer=False, email="", password="",
+    def __init__(self, status="", email="", password="",
                 first_name="", last_name=""):
-        self.host = host
-        self.reviewer = reviewer
+        self.status = status
         self.email = email
         self.password = password
         self.first_name = first_name
@@ -19,10 +18,7 @@ class User:
         User.user_count += 1
     
     def get_user(self):
-        if self.host == True:
-            return self.host
-        elif self.reviewer == True:
-            return self.reviewer
+            return self.status
     #@classmethod
     #def add_user(self):
 
@@ -43,17 +39,26 @@ class User:
 
 class Review:
     feedback_count = 0
-    def __init__(self, feedback="", rating=0):
-        self.feedback = feeback
-        self.rating = rating
+    def __init__(self, status="", email="", password="",
+                first_name="", last_name=""):
+        self.status = status
+        self.email = email
+        self.password = password
+        self.first_name = first_name
+        self.last_name = last_name
         self.id = uuid.uuid1()
+        Review.feedback_count += 1
 
 
-    def new_feedback(self):
-        feedback_count += 1
+
 
     def __del__(self):
-        feedback_count -= 1
+        Review.feedback_count -= 1
+    
+    def new_feedback(self, ratings=0.0, feedback="" ):
+        my_dict = {}
+        my_dict.update({'rating': ratings}, {'feedback': feedback })
+        return my_dict
 
 # Testing objects
 
@@ -68,3 +73,8 @@ print("Changing object attribute:")
 my_user_attributes = my_user.update_user({'name': 'Axel', 'host': False, 'reviewer': True, 'email': 'my_other_email@mail.com', 'password': 'ABCD'})
 
 print("My user attributes:", my_user_attributes)
+
+print("----------------------")
+print("Creating my review:")
+my_review = Review("Ilhan", reviewer=True, email="random_mail@mail.com", password="...", )
+print(my_review.first_name)
