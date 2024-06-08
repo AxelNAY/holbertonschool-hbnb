@@ -57,12 +57,13 @@ class Review:
     
     def new_feedback(self, ratings=0.0, feedback="" ):
         my_dict = {}
-        my_dict.update({'rating': ratings}, {'feedback': feedback })
+        my_dict.update({'rating': ratings})
+        my_dict.update({'feedback': feedback })
         return my_dict
 
 # Testing objects
 
-my_user = User(name="Sofiane", host=True, reviewer=False, email="my_email@mail.com", password="1234")
+my_user = User(status="reviewer", email="my_email@mail.com", password="1234", first_name="Sofiane", last_name="Slimane")
 print(my_user.get_user())
 print(my_user.user_count)
 print("My user attributes before:", my_user.__dict__)
@@ -70,11 +71,13 @@ print("My user object creation date", my_user.created_at)
 print("----------------------------")
 print("my user object updated date", my_user.updated_at)
 print("Changing object attribute:")
-my_user_attributes = my_user.update_user({'name': 'Axel', 'host': False, 'reviewer': True, 'email': 'my_other_email@mail.com', 'password': 'ABCD'})
+my_user_attributes = my_user.update_user({'status': 'host', 'email': 'my_other_email@mail.com', 'password': 'ABCD', 'first_name': 'Optimus', 'last_name': 'Prime'})
 
 print("My user attributes:", my_user_attributes)
 
 print("----------------------")
 print("Creating my review:")
-my_review = Review("Ilhan", reviewer=True, email="random_mail@mail.com", password="...", )
+my_review = Review(status="host", email="another_email@mail.com", password="...", first_name="Bradd", last_name="Pitt")
+print("Review from {}:".format(my_review.first_name), my_review.new_feedback(5.2, "The place had no wifi."))
 print(my_review.first_name)
+print(my_review.id)
