@@ -19,18 +19,16 @@ class City(Country):
         
 
 class Amneties:
-    amneties_list = ["couch", "dishwasher", "fridge",
-                     "microwave", "wifi", "TV", "Balcony"]
+    amneties = ["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"]
     def __init__(self):
         self.created_at = datetime.datetime.today()
         self.updated_at = datetime.datetime.today()
-        self.perso_amneties_list = Amneties.amneties_list
-        self.id = uuid.uuid1()
+        self.id = uuid.uuid1()   
     
-    def update_amneties(self, my_list=[]):
-         self.updated_at = datetime.datetime.today()
-         for amneties in my_list:
-             self.perso_amneties_list.append(amneties) 
+             
+             
+             
+              
             
 
 
@@ -60,11 +58,12 @@ class Review:
 
 
 
-class Place(City, Review):
+class Place(Amneties, City):
 
 
     def __init__(self, name="", description="", adress="", latitude=0, longitude=0, host=[None], rooms=0,
                  bathrooms=0, price_night=0, guest_capacity=0):
+        #super().__init__(amneties=["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"])
         self.name = name
         self.description = description
         self.adress = adress
@@ -94,11 +93,11 @@ class Place(City, Review):
 
 
 
-class User(Review, Place, Amneties):
-    user_count = 0
+class User(Review, Amneties):
+    user_count = 0 
     def __init__(self, email="", password="",
                 first_name="", last_name=""):
-
+        self.amneties = Amneties.amneties
         self.email = email
         self.password = password
         self.first_name = first_name
@@ -118,14 +117,24 @@ class User(Review, Place, Amneties):
                     self.__dict__[key] = value
         self.updated_at = datetime.datetime.today()
         return self.__dict__
-
+    
+    def update_amneties(self, my_new_amneties=[]):
+         self.updated_at = datetime.datetime.today()
+         for comfort in my_new_amneties:
+             self.amneties.append(comfort)
+             
 
 class Host(User, Place):
-    def __init__(self, email="", password="", first_name="", last_name="", places_owned=[]):
+    def __init__(self, email="", password="", first_name="", last_name=""):
         super().__init__(email, password, first_name, last_name)
-        self.places_owned = places_owned
+        self.places_owned = []
+    def add_places(self, host):
+        self.places_owned.append(host)
+
+
 class Commenter(Host):
-    pass
+    def __init__(self, email="", password="", first_name="", last_name=""):
+        super().__init__(email, password, first_name, last_name)
 
 
 
@@ -148,6 +157,14 @@ class Commenter(Host):
 
 
 # Testing objects
-
+#1. Testing assignement of places to host
 my_host = Host(email="my_mail@mail.mail", password="ABCD", first_name="Sofiane", last_name="Slimane")
-my_user.
+my_place = Place("HBNB", "Appartment", "5 random street", 0.0, 0.0, my_host, 5, 2, 150, 10)
+my_host.add_places(my_place.name)
+print(my_host.places_owned)
+
+#2. Testing user adding new amneties
+print("My host amneties before: ", my_host.amneties)
+my_host.update_amneties(["Phone", "Parking"])
+print("My host amneties after: ", my_host.amneties)
+
