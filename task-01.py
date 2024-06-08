@@ -3,7 +3,81 @@
 import uuid
 import datetime
 
-class User:
+
+
+class Country:
+    def __init__(self, country_name=""):
+        self.country_name = country_name
+
+class City(Country):
+    def __init__(self, city_name=""):
+        self.city_name = city_name
+        self.created_at = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
+        self.id = uuid.uuid1()
+
+        
+
+
+
+
+
+
+
+class Place(City, Country):
+
+
+    def __init__(self, description="", adress="", latitude=0, longitude=0, rooms=0,
+                 bathrooms=0, price_night=0, guest_capacity=0):
+        self.description = description
+        self.adress = adress
+        self.latitude = latitude
+        self.longitude = longitude
+        self.rooms = rooms
+        self.bathrooms = bathrooms
+        self.price_night = price_night
+        self.guest_capacity = guest_capacity
+        self.created_at = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
+        self.id = uuid.uuid1()
+
+class Amneties(Place):
+    def __init__(self, amneties_dict={}):
+        self.dict = amneties_dict
+        self.created_at = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
+        self.id = uuid.uuid1()
+    
+    def add_amneties(self, dict={}):
+         for key, value in dict.items(): 
+            self.dict.update({key: value})
+
+
+class Review(Place):
+    feedback_count = 0
+    def __init__(self, status="", email="", password="",
+                first_name="", last_name=""):
+        self.status = status
+        self.email = email
+        self.password = password
+        self.first_name = first_name
+        self.last_name = last_name
+        self.id = uuid.uuid1()
+        self.created_at = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
+        Review.feedback_count += 1
+
+
+
+
+
+
+
+
+
+
+
+class User(Review):
     user_count = 0
     def __init__(self, status="", email="", password="",
                 first_name="", last_name=""):
@@ -37,19 +111,7 @@ class User:
 
 
 
-class Review:
-    feedback_count = 0
-    def __init__(self, status="", email="", password="",
-                first_name="", last_name=""):
-        self.status = status
-        self.email = email
-        self.password = password
-        self.first_name = first_name
-        self.last_name = last_name
-        self.id = uuid.uuid1()
-        self.created_at = datetime.datetime.today()
-        self.updated_at = datetime.datetime.today()
-        Review.feedback_count += 1
+
 
 
 
