@@ -63,8 +63,8 @@ class Place(Amneties, City):
 
 
     def __init__(self, name="", description="", adress="", latitude=0, longitude=0, host=None, rooms=0,
-                 bathrooms=0, price_night=0, guest_capacity=0):
-        #super().__init__(amneties=["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"])
+                 bathrooms=0, price_night=0, guest_capacity=0, city_name="", country_name=""):
+        super().__init__(city_name=city_name, country_name=country_name)
         self.name = name
         self.description = description
         self.adress = adress
@@ -161,7 +161,7 @@ class Commenter(Host):
 # Testing objects
 #1. Testing assignement of places to host
 my_host = Host(email="my_mail@mail.mail", password="ABCD", first_name="Sofiane", last_name="Slimane")
-my_place = Place("HBNB", "Appartment", "5 random street", 0.0, 0.0, my_host, 5, 2, 150, 10)
+my_place = Place("HBNB", "Appartment", "5 random street", 0.0, 0.0, my_host, 5, 2, 150, 10, "Paris", "France")
 my_host.add_places(my_place.name)
 print(my_host.places_owned)
 print(my_place.host)
@@ -186,3 +186,5 @@ print(new_user.updated_at)
 Bordeaux = City("Bordeaux", "France")
 
 print(Bordeaux.country_name)
+print(my_place.city_name)
+print(my_place.country_name)
