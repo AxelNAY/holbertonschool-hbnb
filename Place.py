@@ -25,16 +25,16 @@ class Place:
         Place.place_count += 1
 
 
-    def get_place(self):
+    def get(self):
             return self.name
     
 
 
-    def save_place(self, object):
+    def save(self, object):
         with open("objects.json", 'w') as myFile:
             json.dump(object, myFile)
         
-    def update_place(self, dictionary):
+    def update(self, dictionary):
         for key, value in dictionary.items():
             for keys, values in self.__dict__.items():
                 if key == keys:

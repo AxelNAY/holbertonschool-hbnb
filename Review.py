@@ -15,11 +15,11 @@ class Review:
     def __del__(self):
         Review.review_count -= 1
     
-    def update_review(self, rating=0.0, feedback="" ):
+    def update(self, rating=0.0, feedback="" ):
         self.updated_at = datetime.datetime.today()
         Review.feedback.update({'rating': rating})
         Review.feedback.update({'feedback': feedback })
 
-    def save_review(self, object):
+    def save(self, object):
         with open("objects.json", 'w') as myFile:
             json.dump(object, myFile)

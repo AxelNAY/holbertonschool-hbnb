@@ -15,7 +15,7 @@ class City(Country):
         self.id = uuid.uuid1()
         City.city_count += 1
     
-    def get_city(self):
+    def get(self):
         return self.city_name
     
     def update(self, new_city):
@@ -25,6 +25,6 @@ class City(Country):
     def __del__(self):
         City.city_count -= 1
     
-    def save_city(self, object):
+    def save(self, object):
         with open("City.json", 'w') as myFile:
             json.dump(object, myFile)

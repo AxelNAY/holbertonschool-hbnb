@@ -15,13 +15,13 @@ class Amneties:
     def __del__(self):
         Amneties.amnetie_count -= 1
     
-    def get_amneties(self):
+    def get(self):
         return Amneties.amneties_list
     
 
-    def update_amneties(self, new_amnetie=""):
+    def update(self, new_amnetie=""):
         Amneties.amneties_list.append(new_amnetie)
         self.updated_at = datetime.datetime.today()
-    def save_amneties(self, object):
+    def save(self, object):
         with open("Amneties.json", 'w') as myFile:
             json.dump(object, myFile)

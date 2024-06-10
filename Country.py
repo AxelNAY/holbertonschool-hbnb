@@ -12,15 +12,15 @@ class Country:
     
 
     
-    def get_country(self):
+    def get(self):
         return self.country_name
     
-    def update_country(self, new_country=""):
+    def update(self, new_country=""):
         self.country_name = new_country
     
     def __del__(self):
         Country.country_count -= 1
 
-    def save_country(self, object):
+    def save(self, object):
         with open("Country.json", 'w') as myFile:
             json.dump(object, myFile)

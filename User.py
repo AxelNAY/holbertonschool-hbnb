@@ -22,7 +22,7 @@ class User:
     def __del__(self):
         User.user_count -= 1
     
-    def update_user(self, dictionary):
+    def update(self, dictionary):
         for key, value in dictionary.items():
             for keys, values in self.__dict__.items():
                 if key == keys:
@@ -30,10 +30,10 @@ class User:
         self.updated_at = datetime.datetime.today()
         return self.__dict__
     
-    def get_user(self):
+    def get(self):
         user = f"{self.first_name}, {self.last_name}"
         return user
 
-    def save_user(self, object):
+    def save(self, object):
         with open("User.json", 'w') as myFile:
             json.dump(object, myFile)
