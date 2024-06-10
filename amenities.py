@@ -1,7 +1,7 @@
 import uuid
-import Place from place
+Place = __import__('Place').Place
 
-class Ameneties:
+class Ameneties(Place):
     amneties = ["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"]
     def __init__(self, id_feature, name):
         self.id_place = uuid.uuid4()
@@ -14,7 +14,7 @@ class Ameneties:
         self.created_at = datetime.datetime.today()
         for key in amneties:
             if name == amneties[i]:
-                my_dict[j] = self_name
+                my_dict[j] = self.name
                 j += 1
 
     def update_amenities(self, name):
@@ -23,7 +23,7 @@ class Ameneties:
         self.update_at = datetime.datetime.today()
         for key in amneties:
             if name == amneties[i]:
-                my_dict[j] = self_name
+                my_dict[j] = self.name
                 j += 1
 
     def get_amenities(self, name):

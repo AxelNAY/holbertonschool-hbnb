@@ -1,12 +1,11 @@
 import uuid
 import datetime
-import User from user
-import City from city
-import Country from country
-import Amenities from amenities
-import Reviews from reviews
+User = __import__('User').User
+City = __import__('City').City
+Amneties = __import__('Amneties').Amneties
+Reviews = __import__('Reviews').City
 
-class Place:
+class Place(User, City, Amneties, Reviews):
     def __init__(self, name="", description="", adress="", latitude=0, longitude=0, host=None, rooms=0,
                  bathrooms=0, price_night=0, guest_capacity=0, city_name="", country_name="", first_name="", last_name=""):
         super().__init__(city_name=city_name, country_name=country_name, first_name=first_name, last_name=last_name)
