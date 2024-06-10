@@ -22,5 +22,5 @@ class Country:
         Country.country_count -= 1
 
     def save_country(self, object):
-        with open("objects.json", 'w') as myFile:
+        with open("Country.json", 'w') as myFile:
             json.dump(object, myFile)

@@ -26,5 +26,5 @@ class City(Country):
         City.city_count -= 1
     
     def save_city(self, object):
-        with open("objects.json", 'w') as myFile:
+        with open("City.json", 'w') as myFile:
             json.dump(object, myFile)

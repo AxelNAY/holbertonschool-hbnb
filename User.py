@@ -35,5 +35,5 @@ class User:
         return user
 
     def save_user(self, object):
-        with open("objects.json", 'w') as myFile:
+        with open("User.json", 'w') as myFile:
             json.dump(object, myFile)

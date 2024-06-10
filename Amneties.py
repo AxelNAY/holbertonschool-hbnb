@@ -23,5 +23,5 @@ class Amneties:
         Amneties.amneties_list.append(new_amnetie)
         self.updated_at = datetime.datetime.today()
     def save_amneties(self, object):
-        with open("objects.json", 'w') as myFile:
+        with open("Amneties.json", 'w') as myFile:
             json.dump(object, myFile)
