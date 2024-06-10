@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import uuid
 Place = __import__('Place').Place
 
@@ -7,6 +8,7 @@ class Ameneties(Place):
         self.id_place = uuid.uuid4()
         self.name = name
         self.created_at = datetime.datetime.today()
+        self.update_at = datetime.datetime.today()
 
     def add_amenities(self, name):
         my_dict = {}

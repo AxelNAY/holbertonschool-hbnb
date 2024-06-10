@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import uuid
 import datetime
 User = __import__('User').User
