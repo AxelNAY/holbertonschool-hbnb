@@ -1,28 +1,25 @@
 #!/usr/bin/python3
 import uuid
 import datetime
-
+import json
 
 class Review:
-    feedback_count = 0
+    review_count = 0
+    feedback = {}
     def __init__(self, rating=0.0, feedback=""):
         self.id = uuid.uuid1()
         self.created_at = datetime.datetime.today()
         self.updated_at = datetime.datetime.today()
-        Review.feedback_count += 1
+        Review.review_count_count += 1
 
     def __del__(self):
-        Review.feedback_count -= 1
+        Review.review_count -= 1
     
-    def new_feedback(self, rating=0.0, feedback="" ):
-        my_dict = {}
-        my_dict.update({'rating': rating})
-        my_dict.update({'feedback': feedback })
-        return my_dict
-
-    def update_feedback(self, rating=0.0, feedback="" ):
+    def update_review(self, rating=0.0, feedback="" ):
         self.updated_at = datetime.datetime.today()
-        my_dict = {}
-        my_dict.update({'rating': rating})
-        my_dict.update({'feedback': feedback })
-        return my_dict
+        Review.feedback.update({'rating': rating})
+        Review.feedback.update({'feedback': feedback })
+
+    def save_review(self, object):
+        with open("objects.json", 'w') as myFile:
+            json.dump(object, myFile)

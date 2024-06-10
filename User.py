@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 import uuid
 import datetime
+import json
 
-
-Review = __import__('Review').Review
-Review = __import__('Review').Review
-class User(Review, Amneties):
-    user_count = 0 
+class User:
+    user_count = 0
+    user_list = []
     def __init__(self, email="", password="",
-                first_name="", last_name=""):
-        self.amneties = Amneties.amneties
+                first_name="", last_name="", status=""):
         self.email = email
         self.password = password
         self.first_name = first_name
         self.last_name = last_name
+        self.status = status
+        self.places_owned = []
         self.id = uuid.uuid1()
         self.created_at = datetime.datetime.today()
         self.updated_at = datetime.datetime.today()
@@ -30,7 +30,10 @@ class User(Review, Amneties):
         self.updated_at = datetime.datetime.today()
         return self.__dict__
     
-    def update_amneties(self, my_new_amneties=[]):
-         self.updated_at = datetime.datetime.today()
-         for comfort in my_new_amneties:
-             self.amneties.append(comfort)
+    def get_user(self):
+        user = f"{self.first_name}, {self.last_name}"
+        return user
+
+    def save_user(self, object):
+        with open("objects.json", 'w') as myFile:
+            json.dump(object, myFile)
