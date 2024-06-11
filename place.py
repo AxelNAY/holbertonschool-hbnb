@@ -15,7 +15,7 @@ class Place(DataManager):
         super().__init__(city_name=city_name, country_name=country_name, first_name=first_name, last_name=last_name)
         self.name = name
         self.description = description
-        self.adress = adress
+        self.address = address
         self.latitude = latitude
         self.longitude = longitude
         self.rooms = rooms
@@ -49,8 +49,79 @@ class Place(DataManager):
         my_dict.update({'last_name': last_name})
         return my_dict
 
-    def get_place(self):
+    @property
+    def get_name(self):
         return self.name
+
+    @name.setter
+    def set_name(self, value):
+        if not isinstance(value, str) or not value:
+            raise TypeError("name must be a non-empty string")
+        self._name = value
+
+    @property
+    def get_description(self):
+        return self.description
+
+    @description.setter
+    def set_description(self, value):
+        if not isinstance(value, str):
+            raise TypeError("description must be a string")
+        if not value:
+            raise ValueError("description must not be empty")
+        if len(value) > 400:
+            raise ValueError("description must be under 400 characters")
+        self._description = value
+
+    @property
+    def get_address(self):
+        return self.address
+
+    @address.setter
+    def set_address(self, value):
+        if not isinstance(value, str) or not value:
+            raise TypeError("name must be a non-empty string")
+        self._name = value
+
+    @property
+    def get_latitude(self):
+        return self.latitude
+
+    @name.setter
+    def set_latitude(self, value):
+        if not isinstance(value, str) or not value:
+            raise TypeError("name must be a non-empty string")
+        self._name = value
+
+    @property
+    def get_longitude(self):
+        return self.longitude
+
+    @longitude.setter
+    def set_longitude(self, value):
+        if not isinstance(value, str) or not value:
+            raise TypeError("name must be a non-empty string")
+        self._name = value
+
+    @property
+    def get_name(self):
+        return self.name
+
+    @name.setter
+    def set_name(self, value):
+        if not isinstance(value, str) or not value:
+            raise TypeError("name must be a non-empty string")
+        self._name = value
+
+    @property
+    def get_name(self):
+        return self.name
+
+    @name.setter
+    def set_name(self, value):
+        if not isinstance(value, str) or not value:
+            raise TypeError("name must be a non-empty string")
+        self._name = value
 
     def __del__(self):
         Place.place_count -= 1
