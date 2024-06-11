@@ -2,8 +2,9 @@
 import uuid
 import datetime
 import json
+DataManager = __import__('DataManager').DataManager
 
-class Amenities:
+class Amenities(DataManager):
     amenities = ["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"]
     amenitie_count = 0
     my_dict = {}

@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 import uuid
 import datetime
+import json
+DataManager = __import__('DataManager').DataManager
 import User from user.py
 import City from City
 import Amneties from amneties
 import Reviews from reviews
 
-class Place:
+class Place(DataManager):
     place_count = 0
     def __init__(self, name="", description="", adress="", latitude=0, longitude=0, host=None, rooms=0,
                  bathrooms=0, price_night=0, guest_capacity=0, city_name="", country_name="", first_name="", last_name=""):
