@@ -1,29 +1,33 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 import uuid
-Place = __import__('Place').Place
+import datetime
+import json
 
-class Amenities(Place):
-    amneties = ["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"]
+class Amenities:
+    amenities = ["couch", "dishwasher", "fridge", "microwave", "wifi", "TV", "Balcony"]
+    amenitie_count = 0
     my_dict = {}
     def __init__(self, id_feature, name):
         self.id_place = uuid.uuid4()
         self.name = name
         self.created_at = datetime.datetime.today()
         self.update_at = datetime.datetime.today()
+        Amenities.amnetie_count += 1
 
     def save_amenities(self, name):
-        pass
+        with open("Amneties.json", 'w') as my_file:
+            json.dump(object, my_file)
 
     def update_amenities(self, name):
         j = 0
         self.update_at = datetime.datetime.today()
         for key in amneties:
-            if name == amneties[i]:
+            if name == amenities[i]:
                 my_dict[j] = self.name
                 j += 1
 
     def get_amenities(self, name):
-        pass
+        return Amenities.amenities_list
 
-    def delete_amenities(self, name):
-        pass
+    def __del__(self):
+        Amenities.amenitie_count -= 1
