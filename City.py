@@ -69,7 +69,7 @@ class City(Country):
         #City.city_count -= 1
     
     def save(self):
-        with open("Saving_files/City.json", 'w') as myFile:
+        with open("Saving_files/City.json", 'a') as myFile:
             json.dump(self.__dict__, myFile)
 
 my_city = City("Bordeaux")

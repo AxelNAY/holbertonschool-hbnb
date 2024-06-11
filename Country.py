@@ -30,7 +30,7 @@ class Country:
         Country.country_count -= 1
 
     def save(self):
-        with open("Saving_files/Country.json", 'w') as myFile:
+        with open("Saving_files/Country.json", 'a') as myFile:
             json.dump(self.__dict__, myFile)
 
 my_country = Country("France")

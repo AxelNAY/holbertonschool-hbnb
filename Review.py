@@ -39,7 +39,7 @@ class Review:
         self.feedback = {rating: feedback}
 
     def save(self):
-        with open("Saving_files/Review.json", 'w') as myFile:
+        with open("Saving_files/Review.json", 'a') as myFile:
             json.dump(self.__dict__, myFile)
 
 

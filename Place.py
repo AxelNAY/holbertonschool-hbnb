@@ -27,7 +27,7 @@ class Place:
 
 
     def save(self):
-        with open("Saving_files/Place.json", 'w') as myFile:
+        with open("Saving_files/Place.json", 'a') as myFile:
             json.dump(self.__dict__, myFile)
         
     def update(self, dictionary):

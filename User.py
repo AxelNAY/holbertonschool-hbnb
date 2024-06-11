@@ -129,7 +129,7 @@ class User:
     
 
     def save(self):
-        with open("Saving_files/User.json", 'w') as myFile:
+        with open("Saving_files/User.json", 'a') as myFile:
             json.dump(self.__dict__, myFile)
 
 

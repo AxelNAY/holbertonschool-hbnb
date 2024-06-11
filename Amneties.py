@@ -32,7 +32,7 @@ class Amneties:
     
     
     def save(self):
-         with open("Saving_files/Amneties.json", 'w') as myFile:
+         with open("Saving_files/Amneties.json", 'a') as myFile:
             json.dump(self.__dict__, myFile)
 
         
