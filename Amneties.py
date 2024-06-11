@@ -24,8 +24,27 @@ class Amneties:
         self.__updated_at = datetime.datetime.today()
 
     def update(self, new_amnetie=""):
-        Amneties.amneties_list.append(new_amnetie)
-        self.updated_at = datetime.datetime.today()
-    def save(self, object):
-        with open("Amneties.json", 'w') as myFile:
-            json.dump(object, myFile)
+        self.__amneties.append(new_amnetie)
+        self.__updated_at = datetime.datetime.today()
+    def save(self):
+        my_dict_save = {}
+        for key, values in self.__dict__.items():
+            if key == "_Amneties__created_at" or key == "_Amneties__updated_at" or key == "_Amneties__id":
+                my_dict_save.update({key: str(values)})
+            else:
+                my_dict_save.update({key: values})
+
+        with open("Saving_files/Amneties.json", 'w') as myFile:
+            json.dump(my_dict_save, myFile)
+
+        
+    
+
+
+my_amneties = Amneties()
+print(my_amneties.__dict__)
+print(my_amneties.get)
+my_amneties.update("Nintendo switch")
+print(my_amneties.get)
+
+my_amneties.save()
