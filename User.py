@@ -12,15 +12,112 @@ class User:
         self.__password = password
         self.__first_name = first_name
         self.__last_name = last_name
-        self.__status = status
+        self.status = status
         self.__places_owned = []
-        self.__id = uuid.uuid1()
-        self.__created_at = datetime.datetime.today()
-        self.__updated_at = datetime.datetime.today()
+        self.__id = str(uuid.uuid1())
+        self.created_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today())
         User.user_count += 1   
 
-    def __del__(self):
+
+    @property
+    def get(self):
+        return self.__email
+    @get.setter
+    def get(self, value):
+        self.__email = value
+    
+    @property
+    def get(self):
+        return self.__password
+    @get.setter
+    def get(self, value):
+        self.__password = value
+        self.updated_at = str(datetime.datetime.today())
+
+
+    @property
+    def get(self):
+        return self.__first_name
+    @get.setter
+    def get(self, value):
+        self.__first_name = value
+        self.updated_at = str(datetime.datetime.today())
+
+    @property
+    def get(self):
+        return self.__last_name
+    @get.setter
+    def get(self, value):
+        self.__last_name = value
+        self.updated_at = str(datetime.datetime.today())
+
+    @property
+    def get(self):
+        return self.__places_owned
+    @get.setter
+    def get(self, value):
+        self.__places_owned = value
+        self.updated_at = str(datetime.datetime.today())
+    @property
+    def get(self):
+        return self.__id
+    @get.setter
+    def get(self, value):
+        self.__id = value
+        self.updated_at = str(datetime.datetime.today())
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    def delete(self):
         User.user_count -= 1
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     def update(self, dictionary):
         for key, value in dictionary.items():
@@ -30,21 +127,12 @@ class User:
         self.updated_at = datetime.datetime.today()
         return self.__dict__
     
-    def get(self):
-        user = f"{self.first_name}, {self.last_name}"
-        return user
 
     def save(self):
-        my_dict_save = {}
-        for key, values in self.__dict__.items():
-            if key == "_User__created_at" or key == "_User__updated_at" or key == "_User__id":
-                my_dict_save.update({key: str(values)})
-            else:
-                my_dict_save.update({key: values})
         with open("Saving_files/User.json", 'w') as myFile:
-            json.dump(my_dict_save, myFile)
+            json.dump(self.__dict__, myFile)
 
 
-my_user = User("Random@", "ABCD", "Sofiane", "Slimane", "host")
+my_user = User("Random@", "ABCD", "Ronald", "Slimane", "host")
 print(my_user.__dict__)
 my_user.save()
