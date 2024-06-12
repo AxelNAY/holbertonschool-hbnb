@@ -95,7 +95,7 @@ class User:
     
     def delete(self):
         for dictionary in User.user_object_list:
-            if dictionary['_User__email'] == self.__email:
+            if dictionary['_User__id'] == self.__id:
                  User.user_object_list.remove(dictionary)
         with open("Saving_files/User.json", 'w') as myFile:
             json.dump(User.user_object_list, myFile, indent=4)
@@ -159,3 +159,4 @@ my_user3.save()
 
 my_user2.delete()
 my_user3.delete()
+my_user.delete()

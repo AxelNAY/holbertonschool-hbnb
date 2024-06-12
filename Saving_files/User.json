@@ -1,13 +1,1 @@
-[
-    {
-        "_User__email": "Random@",
-        "_User__password": "ABCD",
-        "_User__first_name": "Ronald",
-        "_User__last_name": "Slimane",
-        "status": "host",
-        "_User__places_owned": [],
-        "_User__id": "a03ed872-28a8-11ef-8c00-3fa427c300e9",
-        "created_at": "2024-06-12 12:43:37.986603",
-        "updated_at": "2024-06-12 12:43:37.986626"
-    }
-]
+[]
