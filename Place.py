@@ -6,7 +6,7 @@ import json
 
 class Place:
     place_count = 0
-
+    place_object_list = []
     def __init__(self, name="", description="", adress="", latitude=0, longitude=0, rooms=0,
                  bathrooms=0, price_night=0, guest_capacity=0, city_name=""):
         self.name = name
@@ -27,8 +27,9 @@ class Place:
 
 
     def save(self):
-        with open("Saving_files/Place.json", 'a') as myFile:
-            json.dump(self.__dict__, myFile)
+        Place.place_object_list.append(self.__dict__)
+        with open("Saving_files/Place.json", 'w') as myFile:
+            json.dump(Place.place_object_list, myFile, indent=4)
         
     def update(self, dictionary):
         for key, value in dictionary.items():
@@ -37,10 +38,22 @@ class Place:
                     self.__dict__[key] = value
         self.__updated_at = str(datetime.datetime.today())
     
-    def __del__(self):
+    def delete(self):
+        for dictionary in Place.place_object_list:
+            if dictionary['_Place__id'] == self.__id:
+                 Place.place_object_list.remove(dictionary)
+        with open("Saving_files/Place.json", 'w') as myFile:
+            json.dump(Place.place_object_list, myFile, indent=4)
+
         Place.place_count -= 1
     
 
-my_place = Place("HBNB", "No Wifi", "Holberton street", 0, 0, 5, 2, 150, 10, "Bordeaux")
+my_place = Place("HBNB", "Small apartment", "Holberton street", 0, 0, 5, 2, 150, 10, "Bordeaux")
+my_place2 = Place("BX_HOTEL", "Hotel situated near Garonne", "A random street in Bordeaux", 0, 0, 5, 2, 150, 10, "Bordeaux")
+my_place3 = Place("FRANCE_HOTEL", "Hotel built next to Eiffel Tower", "A random street in France", 0, 0, 5, 2, 150, 10, "Paris")
 print(my_place.__dict__)
 my_place.save()
+my_place2.save()
+my_place3.save()
+
+my_place2.delete()

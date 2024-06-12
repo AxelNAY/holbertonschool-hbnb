@@ -1,1 +1,32 @@
-{"name": "HBNB", "description": "No Wifi", "adress": "Holberton street", "latitude": 0, "longitude": 0, "rooms": 5, "bathrooms": 2, "price_night": 150, "guest_capacity": 10, "city_name": "Bordeaux", "created_at": "2024-06-11 17:06:30.381273", "updated_at": "2024-06-11 17:06:30.381322", "_Place__id": "2ee99760-2804-11ef-8465-25659abdd89c"}
+[
+    {
+        "name": "HBNB",
+        "description": "Small apartment",
+        "adress": "Holberton street",
+        "latitude": 0,
+        "longitude": 0,
+        "rooms": 5,
+        "bathrooms": 2,
+        "price_night": 150,
+        "guest_capacity": 10,
+        "city_name": "Bordeaux",
+        "created_at": "2024-06-12 13:30:59.063545",
+        "updated_at": "2024-06-12 13:30:59.063585",
+        "_Place__id": "3da8d6de-28af-11ef-8c00-3fa427c300e9"
+    },
+    {
+        "name": "FRANCE_HOTEL",
+        "description": "Hotel built next to Eiffel Tower",
+        "adress": "A random street in France",
+        "latitude": 0,
+        "longitude": 0,
+        "rooms": 5,
+        "bathrooms": 2,
+        "price_night": 150,
+        "guest_capacity": 10,
+        "city_name": "Paris",
+        "created_at": "2024-06-12 13:30:59.063917",
+        "updated_at": "2024-06-12 13:30:59.063922",
+        "_Place__id": "3da8d6e0-28af-11ef-8c00-3fa427c300e9"
+    }
+]
