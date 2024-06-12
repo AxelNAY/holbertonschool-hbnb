@@ -4,7 +4,7 @@ import datetime
 import json
 
 class Country:
-    country_list = []
+    country_object_list = []
     country_count = 0
     def __init__(self, country_name=""):
         self.country_name = country_name
@@ -26,13 +26,26 @@ class Country:
         self.country_name = new_country
         self.__updated_at = str(datetime.datetime.today())
     
-    def __del__(self):
-        Country.country_count -= 1
+    def delete(self):
+        for dictionary in Country.country_object_list:
+            if dictionary['_Country__id'] == self.__id:
+                 Country.country_object_list.remove(dictionary)
+        with open("Saving_files/Country.json", 'w') as myFile:
+            json.dump(Country.country_object_list, myFile, indent=4)
 
     def save(self):
-        with open("Saving_files/Country.json", 'a') as myFile:
-            json.dump(self.__dict__, myFile)
+        Country.country_object_list.append(self.__dict__)
+        with open("Saving_files/Country.json", 'w') as myFile:
+            json.dump(Country.country_object_list, myFile, indent=4)
 
 my_country = Country("France")
+my_country2 = Country("Spain")
+my_country3 = Country("Germany")
 print(my_country.__dict__)
 my_country.save()
+my_country2.save()
+my_country3.save()
+
+my_country.delete()
+my_country2.delete()
+my_country3.delete()
