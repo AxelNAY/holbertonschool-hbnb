@@ -5,6 +5,7 @@ import json
 
 class Review:
     review_count = 0
+    review_object_list = []
     
     def __init__(self, rating=0.0, feedback=""):
         self.__id = str(uuid.uuid1())
@@ -39,8 +40,9 @@ class Review:
         self.feedback = {rating: feedback}
 
     def save(self):
-        with open("Saving_files/Review.json", 'a') as myFile:
-            json.dump(self.__dict__, myFile)
+        Review.review_object_list.append(self.__dict__)
+        with open("Saving_files/Review.json", 'w') as myFile:
+            json.dump(Review.review_object_list, myFile)
 
 
 my_review = Review(10.0, "Best place ever")

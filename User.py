@@ -5,7 +5,7 @@ import json
 
 class User:
     user_count = 0
-    user_list = []
+    user_object_list = []
     def __init__(self, email="", password="",
                 first_name="", last_name="", status=""):
         self.__email = email
@@ -94,6 +94,12 @@ class User:
     
     
     def delete(self):
+        for dictionary in User.user_object_list:
+            if dictionary['_User__email'] == self.__email:
+                 User.user_object_list.remove(dictionary)
+        with open("Saving_files/User.json", 'w') as myFile:
+            json.dump(User.user_object_list, myFile, indent=4)
+
         User.user_count -= 1
     
     
@@ -129,10 +135,27 @@ class User:
     
 
     def save(self):
-        with open("Saving_files/User.json", 'a') as myFile:
-            json.dump(self.__dict__, myFile)
+        User.user_object_list.append(self.__dict__)
+        with open("Saving_files/User.json", 'w') as myFile:
+            json.dump(User.user_object_list, myFile, indent=4)
 
 
 my_user = User("Random@", "ABCD", "Ronald", "Slimane", "host")
-print(my_user.__dict__)
+my_user2 = User("Luffy@", "1234", "Luffy", "Monkey.D", "host")
+my_user3 = User("Zoro@", "Sword", "Zoro", "Roronoa", "commenter")
+
 my_user.save()
+my_user2.save()
+my_user3.save()
+
+#with open("Saving_files/User.json", 'r') as myFile:
+    #my_dict = json.load(myFile)
+    #print(my_dict)
+    #rint(type(my_dict))
+#with open("Saving_files/User.json", 'r') as myFile:
+    #for objects in myFile:
+        #print(objects)
+        #print(type(objects))
+
+my_user2.delete()
+my_user3.delete()
