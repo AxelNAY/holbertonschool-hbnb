@@ -6,7 +6,7 @@ import json
 
 Country = __import__('Country').Country
 class City(Country):
-    city_list = []
+    city_object_list = []
     city_count = 0
     def __init__(self, city_name=""):
         self.city_name = city_name
@@ -57,22 +57,31 @@ class City(Country):
         self.updated_at = str(uuid.uuid1())
 
     def delete(self):
-        with open("Saving_files/City.json", 'r+') as myFile:
-            for line in myFile:
-                print(line)
-                for dictionary in json.loads(line):
-                    for key in dictionary:
-                        if key == "_City__city_name":
-                            pass
-                            
-
-        #City.city_count -= 1
+        for dictionary in City.city_object_list:
+            if dictionary['_City__id'] == self.__id:
+                 City.city_object_list.remove(dictionary)
+        with open("Saving_files/City.json", 'w') as myFile:
+            json.dump(City.city_object_list, myFile, indent=4)
     
     def save(self):
-        with open("Saving_files/City.json", 'a') as myFile:
-            json.dump(self.__dict__, myFile)
+        City.city_object_list.append(self.__dict__)
+        with open("Saving_files/City.json", 'w') as myFile:
+            json.dump(City.city_object_list, myFile, indent=4)
 
 my_city = City("Bordeaux")
-print(my_city.__dict__)
+my_city2 = City("Paris")
+my_city3 = City("Nice")
+
 my_city.save()
+my_city2.save()
+my_city3.save()
+
+my_city.delete()
+my_city2.delete()
+my_city3.delete()
+
+
+
+
+print(my_city.__dict__)
 #my_city.delete()
