@@ -1,0 +1,37 @@
+>>> User = __import__('C-User').User
+my_user = User("my_mail@mail.com", "ABCDeesgege", "Ronald", "Slimane", "host")
+
+>>> print(my_user.created_at)
+2024-06-13 ...
+>>> print(my_user.updated_at)
+2024-06-13 ...
+
+>>> my_user2 = User("my_mail@mail.com", "1234gezgezgege", "Luffy", "Monkey.D", "host")
+Traceback (most recent call last):
+...
+ValueError: my_mail@mail.com is already used
+
+>>> my_user3 = User("", "foezgoiezgeo", "Zoro", "Roronoa", "commenter")
+Traceback (most recent call last):
+...
+ValueError: Valid email is recquired
+
+>>> my_user4 = User("Usopp@mail.com", True, "Usopp", "Sogeking", "commenter")
+Traceback (most recent call last):
+...
+ValueError: Password must be a string
+
+>>> my_user5 = User("Nami@mail.com", "passwordefezf", "", "", "commenter")
+Traceback (most recent call last):
+...
+ValueError: First name or last name must be a valid string
+
+>>> my_user6 = User("Franky@mail.com", "passw", "Franky", "Shogun", "commenter")
+Traceback (most recent call last):
+...
+ValueError: Password should contain at least 8 characters
+
+>>> my_user7 = User("Bruno@mail.com", "Uptownfunk2014", "Bruno", "Mars", "singer")
+Traceback (most recent call last):
+...
+ValueError: Choose a valid status (host or commenter)

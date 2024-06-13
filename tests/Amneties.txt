@@ -1,0 +1,19 @@
+>>> Amneties = __import__('C-Amneties').Amneties
+>>> my_amneties = Amneties()
+
+>>> print(my_amneties.created_at)
+2024-06-13 ...
+>>> print(my_amneties.updated_at)
+2024-06-13 ...
+
+>>> print(my_amneties.amneties)
+['couch', 'dishwasher', 'fridge', 'microwave', 'wifi', 'TV', 'Balcony']
+
+>>> my_amneties.update("PS5")
+>>> print(my_amneties.amneties)
+['couch', 'dishwasher', 'fridge', 'microwave', 'wifi', 'TV', 'Balcony', 'PS5']
+
+>>> my_amneties.update("PS5")
+Traceback (most recent call last):
+...
+ValueError: PS5 is already in your list

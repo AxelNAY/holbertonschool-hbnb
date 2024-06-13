@@ -30,6 +30,8 @@ class Amneties:
             json.dump(Amneties.amneties_object_list, myFile, indent=4)
 
     def update(self, new_amnetie=""):
+        if new_amnetie in self.amneties:
+            raise ValueError(f"{new_amnetie} is already in your list")
         self.amneties.append(new_amnetie)
         self.__updated_at = str(datetime.datetime.today())
     
@@ -58,3 +60,14 @@ my_amneties3.save()
 my_amneties.delete()
 my_amneties2.delete()
 my_amneties3.delete()
+
+print('------------')
+print("My amneties creation/update date:")
+print(my_amneties.created_at)
+print(my_amneties.updated_at)
+print('------------------')
+print("Testing amneties update:")
+print(my_amneties.amneties)
+my_amneties.update("PS5")
+my_amneties.update("PS5")
+print(my_amneties.amneties)
