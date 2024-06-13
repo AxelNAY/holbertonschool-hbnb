@@ -19,8 +19,8 @@ class Place:
         self.price_night = price_night
         self.guest_capacity = guest_capacity
         self.city_name = city_name
-        self.created_at = str(datetime.datetime.today())
-        self.updated_at = str(datetime.datetime.today())
+        self.created_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
         self.__id = str(uuid.uuid1())
         Place.place_count += 1
 
@@ -36,7 +36,7 @@ class Place:
             for keys, values in self.__dict__.items():
                 if key == keys:
                     self.__dict__[key] = value
-        self.__updated_at = str(datetime.datetime.today())
+        self.__updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
     
     def delete(self):
         for dictionary in Place.place_object_list:

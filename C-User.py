@@ -30,8 +30,8 @@ class User:
         self.status = status
         self.__places_owned = []
         self.__id = str(uuid.uuid1())
-        self.created_at = str(datetime.datetime.today())
-        self.updated_at = str(datetime.datetime.today())
+        self.created_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
         User.user_count += 1   
         User.user_object_list.append(self.__dict__)
 
@@ -48,7 +48,7 @@ class User:
     @get.setter
     def get(self, value):
         self.__password = value
-        self.updated_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
 
 
     @property
@@ -57,7 +57,7 @@ class User:
     @get.setter
     def get(self, value):
         self.__first_name = value
-        self.updated_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
 
     @property
     def get(self):
@@ -65,7 +65,7 @@ class User:
     @get.setter
     def get(self, value):
         self.__last_name = value
-        self.updated_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
 
     @property
     def get(self):
@@ -73,14 +73,14 @@ class User:
     @get.setter
     def get(self, value):
         self.__places_owned = value
-        self.updated_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
     @property
     def get(self):
         return self.__id
     @get.setter
     def get(self, value):
         self.__id = value
-        self.updated_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
     
     
     
@@ -145,7 +145,7 @@ class User:
             for keys, values in self.__dict__.items():
                 if key == keys:
                     self.__dict__[key] = value
-        self.updated_at = datetime.datetime.today()
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
         return self.__dict__
     
 

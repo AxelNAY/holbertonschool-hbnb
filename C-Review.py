@@ -9,8 +9,8 @@ class Review:
     
     def __init__(self, rating=0.0, feedback=""):
         self.__id = str(uuid.uuid1())
-        self.created_at = str(datetime.datetime.today())
-        self.updated_at = str(datetime.datetime.today())
+        self.created_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
         self.feedback = {rating: feedback}
         self.__id = str(uuid.uuid1())
         Review.review_count += 1
@@ -21,6 +21,7 @@ class Review:
     @get.setter
     def get(self, value):
         self.__id = value
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
 
 
 
@@ -41,7 +42,7 @@ class Review:
         Review.review_count -= 1
     
     def update(self, rating=0.0, feedback="" ):
-        self.updated_at = str(datetime.datetime.today())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
         self.feedback = {rating: feedback}
 
     def save(self):

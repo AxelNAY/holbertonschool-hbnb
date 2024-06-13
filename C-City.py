@@ -10,8 +10,8 @@ class City(Country):
     city_count = 0
     def __init__(self, city_name=""):
         self.city_name = city_name
-        self.created_at = str(datetime.datetime.today())
-        self.updated_at = str(datetime.datetime.today())
+        self.created_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
         self.__id = str(uuid.uuid1())
         City.city_count += 1
     
@@ -54,7 +54,7 @@ class City(Country):
 
     def update(self, new_city):
         self.city_name = new_city 
-        self.updated_at = str(uuid.uuid1())
+        self.updated_at = str(datetime.datetime.today().replace(microsecond=0, second=0, minute=0))
 
     def delete(self):
         for dictionary in City.city_object_list:
