@@ -1,4 +1,7 @@
 >>> City = __import__('C-City').City
+>>> import uuid
+>>> import datetime
+>>> import json
 >>> my_city = City("Bordeaux")
 >>> my_city2 = City("Paris")
 >>> my_city3 = City("Nice")
@@ -12,25 +15,18 @@
 ...    my_objects = json.load(myFile)
 ...    for dictionary in my_objects:
 ...        print(dictionary, end="\n\n")
-{'country_name': 'France', 'created_at': '2024-06-13 15:37:26.153720', 'updated_at': '2024-06-13 15:37:26.153751', '_Country__id': '1254ab30-298a-11ef-9801-f504c73b6109'}
-
-{'country_name': 'Germany', 'created_at': '2024-06-13 15:37:26.154011', 'updated_at': '2024-06-13 15:37:26.154015', '_Country__id': '1254ab32-298a-11ef-9801-f504c73b6109'}
-
-{'city_name': 'Bordeaux', 'created_at': '2024-06-13 15:37:26.168077', 'updated_at': '2024-06-13 15:37:26.168104', '_City__id': '1254ab33-298a-11ef-9801-f504c73b6109'}
-
-{'city_name': 'Paris', 'created_at': '2024-06-13 15:37:26.168157', 'updated_at': '2024-06-13 15:37:26.168165', '_City__id': '1254ab34-298a-11ef-9801-f504c73b6109'}
-
-{'city_name': 'Nice', 'created_at': '2024-06-13 15:37:26.168190', 'updated_at': '2024-06-13 15:37:26.168211', '_City__id': '1254ab35-298a-11ef-9801-f504c73b6109'}
-
+{'city_name': 'Bordeaux', 'created_at': '2024-06-13 17:00:00', 'updated_at': '2024-06-13 17:00:00', '_City__id': '3b7d8002-2996-11ef-9801-f504c73b6109'}
+<BLANKLINE>
+{'city_name': 'Paris', 'created_at': '2024-06-13 17:00:00', 'updated_at': '2024-06-13 17:00:00', '_City__id': '3b7d8003-2996-11ef-9801-f504c73b6109'}
+<BLANKLINE>
+{'city_name': 'Nice', 'created_at': '2024-06-13 17:00:00', 'updated_at': '2024-06-13 17:00:00', '_City__id': '3b7d8004-2996-11ef-9801-f504c73b6109'}
+<BLANKLINE>
 >>> my_city3.delete()
 >>> with open("Saving_files/City.json", 'r') as myFile:
 ...    my_objects = json.load(myFile)
 ...    for dictionary in my_objects:
 ...        print(dictionary, end="\n\n")
-{'country_name': 'France', 'created_at': '2024-06-13 15:38:40.329888', 'updated_at': '2024-06-13 15:38:40.329915', '_Country__id': '3e8b0fc8-298a-11ef-9801-f504c73b6109'}
-
-{'country_name': 'Germany', 'created_at': '2024-06-13 15:38:40.330303', 'updated_at': '2024-06-13 15:38:40.330306', '_Country__id': '3e8b0fca-298a-11ef-9801-f504c73b6109'}
-
-{'city_name': 'Bordeaux', 'created_at': '2024-06-13 15:38:40.335350', 'updated_at': '2024-06-13 15:38:40.335374', '_City__id': '3e8b0fcb-298a-11ef-9801-f504c73b6109'}
-
-{'city_name': 'Paris', 'created_at': '2024-06-13 15:38:40.335461', 'updated_at': '2024-06-13 15:38:40.335474', '_City__id': '3e8b0fcc-298a-11ef-9801-f504c73b6109'}
+{'city_name': 'Bordeaux', 'created_at': '2024-06-13 17:00:00', 'updated_at': '2024-06-13 17:00:00', '_City__id': '691e401e-2996-11ef-9801-f504c73b6109'}
+    <BLANKLINE>
+    {'city_name': 'Paris', 'created_at': '2024-06-13 17:00:00', 'updated_at': '2024-06-13 17:00:00', '_City__id': '691e401f-2996-11ef-9801-f504c73b6109'}
+    <BLANKLINE>

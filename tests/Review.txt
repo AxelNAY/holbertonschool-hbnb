@@ -1,0 +1,45 @@
+>>> Review = __import__('C-Review').Review
+>>> import uuid
+>>> import datetime
+>>> import json
+
+>>> my_review = Review(10.0, "Best place ever")
+>>> my_review2 = Review(5.0, "Not bad")
+>>> my_review3 = Review(0.0, "Never coming back")
+
+
+
+
+>>> print(my_review.created_at)
+2024-06-13 17:00:00
+>>> print(my_review.updated_at)
+2024-06-13 17:00:00
+
+
+
+
+
+>>> my_review.save()
+>>> my_review2.save()
+>>> my_review3.save()
+
+# The result of the test below won't be right because the id and the time constantly change, but objects are still saved/deleted
+>>> with open("Saving_files/Review.json", 'r') as myFile:
+...    my_objects = json.load(myFile)
+...    for dictionary in my_objects:
+...        print(dictionary, end="\n\n")
+{'_Review__id': '8b3744ff-2994-11ef-9801-f504c73b6109', 'created_at': '2024-06-13 16:00:00', 'updated_at': '2024-06-13 16:00:00', 'feedback': {'10.0': 'Best place ever'}}
+<BLANKLINE>
+{'_Review__id': '8b374501-2994-11ef-9801-f504c73b6109', 'created_at': '2024-06-13 16:00:00', 'updated_at': '2024-06-13 16:00:00', 'feedback': {'5.0': 'Not bad'}}
+<BLANKLINE>
+{'_Review__id': '8b374503-2994-11ef-9801-f504c73b6109', 'created_at': '2024-06-13 16:00:00', 'updated_at': '2024-06-13 16:00:00', 'feedback': {'0.0': 'Never coming back'}}
+<BLANKLINE>
+>>> my_review.delete()
+>>> with open("Saving_files/Review.json", 'r') as myFile:
+...    my_objects = json.load(myFile)
+...    for dictionary in my_objects:
+...        print(dictionary, end="\n\n")
+{'_Review__id': '8b374501-2994-11ef-9801-f504c73b6109', 'created_at': '2024-06-13 16:00:00', 'updated_at': '2024-06-13 16:00:00', 'feedback': {'5.0': 'Not bad'}}
+<BLANKLINE>
+{'_Review__id': '8b374503-2994-11ef-9801-f504c73b6109', 'created_at': '2024-06-13 16:00:00', 'updated_at': '2024-06-13 16:00:00', 'feedback': {'0.0': 'Never coming back'}}
+<BLANKLINE>

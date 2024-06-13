@@ -6,9 +6,9 @@
 >>> my_country2 = Country("Spain")
 >>> my_country3 = Country("Germany")
 >>> print(my_country.created_at)
-2024-06-13 16:00:00
+2024-06-13 17:00:00
 >>> print(my_country.updated_at)
-2024-06-13 16:00:00
+2024-06-13 17:00:00
 
 >>> my_country.save()
 >>> my_country2.save()

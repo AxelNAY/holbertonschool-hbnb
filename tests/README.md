@@ -1,0 +1,2 @@
+NOTE: When testing if objects are saved into json file, Python might consider those tests as "failed", because the object's id and its creation/update date is never the same as the expected output.
+The save and delete method still work.
