@@ -4,7 +4,7 @@ import datetime
 import json
 
 
-Country = __import__('Country').Country
+Country = __import__('C-Country').Country
 class City(Country):
     city_object_list = []
     city_count = 0
@@ -75,13 +75,17 @@ my_city3 = City("Nice")
 my_city.save()
 my_city2.save()
 my_city3.save()
-
-my_city.delete()
-my_city2.delete()
 my_city3.delete()
+with open("Saving_files/City.json", 'r') as myFile:
+    my_objects = json.load(myFile)
+    for dictionary in my_objects:
+        print(dictionary, end="\n\n")
+#my_city.delete()
+#my_city2.delete()
 
 
 
 
-print(my_city.__dict__)
+
+#print(my_city.__dict__)
 #my_city.delete()

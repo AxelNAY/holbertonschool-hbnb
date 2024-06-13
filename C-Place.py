@@ -51,9 +51,17 @@ class Place:
 my_place = Place("HBNB", "Small apartment", "Holberton street", 0, 0, 5, 2, 150, 10, "Bordeaux")
 my_place2 = Place("BX_HOTEL", "Hotel situated near Garonne", "A random street in Bordeaux", 0, 0, 5, 2, 150, 10, "Bordeaux")
 my_place3 = Place("FRANCE_HOTEL", "Hotel built next to Eiffel Tower", "A random street in France", 0, 0, 5, 2, 150, 10, "Paris")
-print(my_place.__dict__)
+
 my_place.save()
 my_place2.save()
 my_place3.save()
 
-my_place2.delete()
+#with open("Saving_files/Place.json", 'r') as myFile:
+    #my_objects = json.load(myFile)
+    #print(my_objects)
+
+my_place.delete()
+with open("Saving_files/Place.json", 'r') as myFile:
+    my_objects = json.load(myFile)
+    for dictionary in my_objects:
+        print(dictionary, end="\n\n")

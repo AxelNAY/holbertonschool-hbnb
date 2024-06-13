@@ -41,11 +41,15 @@ class Country:
 my_country = Country("France")
 my_country2 = Country("Spain")
 my_country3 = Country("Germany")
-print(my_country.__dict__)
+#print(my_country.__dict__)
 my_country.save()
 my_country2.save()
 my_country3.save()
-
-my_country.delete()
 my_country2.delete()
-my_country3.delete()
+with open("Saving_files/Country.json", 'r') as myFile:
+    my_objects = json.load(myFile)
+    for dictionary in my_objects:
+        print(dictionary, end="\n\n")
+#my_country.delete()
+
+#my_country3.delete()

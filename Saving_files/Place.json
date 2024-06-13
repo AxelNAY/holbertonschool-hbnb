@@ -1,8 +1,8 @@
 [
     {
-        "name": "HBNB",
-        "description": "Small apartment",
-        "adress": "Holberton street",
+        "name": "BX_HOTEL",
+        "description": "Hotel situated near Garonne",
+        "adress": "A random street in Bordeaux",
         "latitude": 0,
         "longitude": 0,
         "rooms": 5,
@@ -10,9 +10,9 @@
         "price_night": 150,
         "guest_capacity": 10,
         "city_name": "Bordeaux",
-        "created_at": "2024-06-12 13:30:59.063545",
-        "updated_at": "2024-06-12 13:30:59.063585",
-        "_Place__id": "3da8d6de-28af-11ef-8c00-3fa427c300e9"
+        "created_at": "2024-06-13 15:22:52.997380",
+        "updated_at": "2024-06-13 15:22:52.997394",
+        "_Place__id": "09e38929-2988-11ef-9801-f504c73b6109"
     },
     {
         "name": "FRANCE_HOTEL",
@@ -25,8 +25,8 @@
         "price_night": 150,
         "guest_capacity": 10,
         "city_name": "Paris",
-        "created_at": "2024-06-12 13:30:59.063917",
-        "updated_at": "2024-06-12 13:30:59.063922",
-        "_Place__id": "3da8d6e0-28af-11ef-8c00-3fa427c300e9"
+        "created_at": "2024-06-13 15:22:52.997414",
+        "updated_at": "2024-06-13 15:22:52.997418",
+        "_Place__id": "09e3892a-2988-11ef-9801-f504c73b6109"
     }
 ]

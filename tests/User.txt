@@ -1,5 +1,5 @@
 >>> User = __import__('C-User').User
-my_user = User("my_mail@mail.com", "ABCDeesgege", "Ronald", "Slimane", "host")
+my_user = User("my_mail@mail.com", "ABCDeesgege", "Sofiane", "Slimane", "host")
 
 >>> print(my_user.created_at)
 2024-06-13 ...
