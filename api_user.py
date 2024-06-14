@@ -1,102 +1,84 @@
 from flask import Flask, request, jsonify
 from flask_restx import Api, Resource, fields
-from models.user import User
-import re
+from user import User  # Assuming User class is in user.py
 
 app = Flask(__name__)
-api = Api(app)
+api = Api(app, version='1.0', title='User API',
+          description='A simple User API',)
 
-# Load existing users from JSON file
-User.load_all()
+ns = api.namespace('users', description='User operations')
 
-# User model for request parsing and response marshalling
 user_model = api.model('User', {
-    'email': fields.String(required=True, description='Email address of the user'),
-    'password': fields.String(required=True, description='Password of the user'),
-    'first_name': fields.String(required=True, description='First name of the user'),
-    'last_name': fields.String(required=True, description='Last name of the user'),
-    'status': fields.String(required=True, description='Status of the user')
+    'email': fields.String(required=True, description='The user email'),
+    'password': fields.String(required=True, description='The user password'),
+    'first_name': fields.String(required=True, description='The user first name'),
+    'last_name': fields.String(required=True, description='The user last name'),
+    'status': fields.String(required=True, description='The user status', enum=['host', 'commenter'])
 })
 
-@api.route('/users')
+users = {}  # This will act as our in-memory database
+
+@ns.route('/')
 class UserList(Resource):
-    @api.doc('list_users')
+    @ns.doc('list_users')
     def get(self):
         """List all users"""
-        return jsonify(User.user_object_list)
+        return [user.__dict__ for user in User.user_object_list], 200
 
-    @api.doc('create_user')
-    @api.expect(user_model)
+    @ns.doc('create_user')
+    @ns.expect(user_model)
+    @ns.response(201, 'User created')
+    @ns.response(400, 'Bad Request')
+    @ns.response(409, 'Conflict')
     def post(self):
         """Create a new user"""
         data = request.json
-        email = data.get('email')
-        
-        # Validate email format
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return {"message": "Invalid email format"}, 400
-        
-        # Check for duplicate email
-        if any(user['_User__email'] == email for user in User.user_object_list):
-            return {"message": "Email already exists"}, 409
-        
-        user = User(
-            email=email,
-            password=data.get('password'),
-            first_name=data.get('first_name'),
-            last_name=data.get('last_name'),
-            status=data.get('status')
-        )
-        user.save()
-        return jsonify(user.__dict__), 201
+        try:
+            user = User(**data)
+            user.save()
+            return user.__dict__, 201
+        except ValueError as e:
+            return {'message': str(e)}, 400
+        except Exception as e:
+            return {'message': str(e)}, 409
 
-@api.route('/users/<string:user_id>')
-class UserResource(Resource):
-    @api.doc('get_user')
+@ns.route('/<string:user_id>')
+@ns.response(404, 'User not found')
+@ns.param('user_id', 'The user identifier')
+class User(Resource):
+    @ns.doc('get_user')
     def get(self, user_id):
         """Fetch a user given its identifier"""
-        user = next((user for user in User.user_object_list if user['_User__id'] == user_id), None)
-        if not user:
-            return {"message": "User not found"}, 404
-        return jsonify(user)
+        user = next((u for u in User.user_object_list if u['_User__id'] == user_id), None)
+        if user:
+            return user, 200
+        else:
+            return {'message': 'User not found'}, 404
 
-    @api.doc('update_user')
-    @api.expect(user_model)
+    @ns.doc('delete_user')
+    @ns.response(204, 'User deleted')
+    def delete(self, user_id):
+        """Delete a user given its identifier"""
+        user = next((u for u in User.user_object_list if u['_User__id'] == user_id), None)
+        if user:
+            user_obj = User(**user)
+            user_obj.delete()
+            return '', 204
+        else:
+            return {'message': 'User not found'}, 404
+
+    @ns.doc('update_user')
+    @ns.expect(user_model)
     def put(self, user_id):
         """Update a user given its identifier"""
         data = request.json
-        user = next((user for user in User.user_object_list if user['_User__id'] == user_id), None)
-        if not user:
-            return {"message": "User not found"}, 404
-        user_obj = User(
-            email=user['_User__email'],
-            password=user['_User__password'],
-            first_name=user['_User__first_name'],
-            last_name=user['_User__last_name'],
-            status=user['status']
-        )
-        user_obj.__dict__ = user
-        user_obj.update(data)
-        user_obj.save_all()
-        return jsonify(user_obj.__dict__)
-
-    @api.doc('delete_user')
-    def delete(self, user_id):
-        """Delete a user given its identifier"""
-        user = next((user for user in User.user_object_list if user['_User__id'] == user_id), None)
-        if not user:
-            return {"message": "User not found"}, 404
-        user_obj = User(
-            email=user['_User__email'],
-            password=user['_User__password'],
-            first_name=user['_User__first_name'],
-            last_name=user['_User__last_name'],
-            status=user['status']
-        )
-        user_obj.__dict__ = user
-        user_obj.delete()
-        return '', 204
+        user = next((u for u in User.user_object_list if u['_User__id'] == user_id), None)
+        if user:
+            user_obj = User(**user)
+            user_obj.update(data)
+            return user_obj.__dict__, 200
+        else:
+            return {'message': 'User not found'}, 404
 
 if __name__ == '__main__':
     app.run(debug=True)
-
