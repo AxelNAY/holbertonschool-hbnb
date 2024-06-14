@@ -1,6 +1,6 @@
 # test_app.py
 import unittest
-from app import app, Amneties
+from api_amneties import app, Amneties
 
 class AmenitiesTestCase(unittest.TestCase):
     def setUp(self):
