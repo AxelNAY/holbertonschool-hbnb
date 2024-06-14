@@ -1,4 +1,4 @@
->>> Country = __import__('C-Country').Country
+>>> Country = __import__('Country_class').Country
 >>> import uuid
 >>> import datetime
 >>> import json

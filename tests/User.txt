@@ -1,4 +1,4 @@
->>> User = __import__('C-User').User
+>>> User = __import__('User_class').User
 >>> my_user = User("my_mail@mail.com", "ABCDeesgege", "Sofiane", "Slimane", "host")
 
 >>> print(my_user.created_at)

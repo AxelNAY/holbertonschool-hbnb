@@ -1,4 +1,4 @@
->>> Place = __import__('C-Place').Place
+>>> Place = __import__('Place_class').Place
 >>> import uuid
 >>> import datetime
 >>> import json

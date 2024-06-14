@@ -1,17 +1,32 @@
 [
     {
-        "name": "HBNB",
-        "description": "Too small",
-        "adress": "Random street",
+        "name": "BX_HOTEL",
+        "description": "Hotel situated near Garonne",
+        "adress": "A random street in Bordeaux",
         "latitude": 0,
         "longitude": 0,
         "rooms": 5,
-        "bathrooms": 5,
-        "price_night": 100,
+        "bathrooms": 2,
+        "price_night": 150,
         "guest_capacity": 10,
         "city_name": "Bordeaux",
-        "created_at": "2024-06-14 14:00:00",
-        "updated_at": "2024-06-14 14:00:00",
-        "_Place__id": "37ca632a-2a4b-11ef-b3de-93aed6173d47"
+        "created_at": "2024-06-14 20:00:00",
+        "updated_at": "2024-06-14 20:00:00",
+        "_Place__id": "fdb3af85-2a77-11ef-8681-6b30f0489dc2"
+    },
+    {
+        "name": "FRANCE_HOTEL",
+        "description": "Hotel built next to Eiffel Tower",
+        "adress": "A random street in France",
+        "latitude": 0,
+        "longitude": 0,
+        "rooms": 5,
+        "bathrooms": 2,
+        "price_night": 150,
+        "guest_capacity": 10,
+        "city_name": "Paris",
+        "created_at": "2024-06-14 20:00:00",
+        "updated_at": "2024-06-14 20:00:00",
+        "_Place__id": "fdb3af86-2a77-11ef-8681-6b30f0489dc2"
     }
 ]

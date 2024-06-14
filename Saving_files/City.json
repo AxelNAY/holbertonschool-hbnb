@@ -1,14 +1,14 @@
 [
     {
         "city_name": "Bordeaux",
-        "created_at": "2024-06-13 18:00:00",
-        "updated_at": "2024-06-13 18:00:00",
-        "_City__id": "75b11b28-29a3-11ef-9801-f504c73b6109"
+        "created_at": "2024-06-14 19:00:00",
+        "updated_at": "2024-06-14 19:00:00",
+        "_City__id": "e2d8a0fc-2a77-11ef-8681-6b30f0489dc2"
     },
     {
         "city_name": "Paris",
-        "created_at": "2024-06-13 18:00:00",
-        "updated_at": "2024-06-13 18:00:00",
-        "_City__id": "75b11b29-29a3-11ef-9801-f504c73b6109"
+        "created_at": "2024-06-14 19:00:00",
+        "updated_at": "2024-06-14 19:00:00",
+        "_City__id": "e2d8a0fd-2a77-11ef-8681-6b30f0489dc2"
     }
 ]

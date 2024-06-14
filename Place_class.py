@@ -63,5 +63,8 @@ class Place:
 
         Place.place_count -= 1
 
-    def get(self):
-        return self.__dict__
+    def get(self, object_id):
+        for dictionary in Place.place_object_list:
+            if dictionary['_Place__id'] == object_id:
+                return dictionary
+print(Place.place_object_list)

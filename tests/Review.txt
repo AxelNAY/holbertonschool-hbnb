@@ -1,4 +1,4 @@
->>> Review = __import__('C-Review').Review
+>>> Review = __import__('Review_class').Review
 >>> import uuid
 >>> import datetime
 >>> import json

@@ -32,18 +32,18 @@ class DataManager(IPersistenceManager):
             raise TypeError("Type d'entité non pris en charge")
 
     def get(self, entity_id, entity_type):
-        if entity_type == Place:
-            Place.get(self)
+        if entity_type == 'Place':
+             Place.get(self, entity_id)
         elif entity_type == User:
-            return self.get_user(entity_id)
+            User.get(entity_id)
         elif entity_type == City:
-            return self.get_city(entity_id)
+            City.get(entity_id)
         elif entity_type == Amneties:
-            return self.get_amenities(entity_id)
+            Amneties.get(entity_id)
         elif entity_type == Review:
-            return self.get_review(entity_id)
+            Review.get(entity_id)
         elif entity_type == Country:
-            return self.get_country(entity_id)
+            Country.get(entity_id)
         else:
             raise TypeError("Type d'entité non pris en charge")
 
@@ -83,4 +83,6 @@ my_place = Place("HBNB", "Too small", "Random street", 0, 0, 5, 5, 100, 10, "Bor
 data_manager = DataManager()
 
 data = data_manager.save(my_place)
+#print(data)
+data = data_manager.get('37ca632a-2a4b-11ef-b3de-93aed6173d47', 'Place')
 print(data)

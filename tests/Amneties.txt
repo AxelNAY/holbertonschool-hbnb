@@ -1,4 +1,4 @@
->>> Amneties = __import__('C-Amneties').Amneties
+>>> Amneties = __import__('Amneties_class').Amneties
 >>> my_amneties = Amneties()
 
 >>> print(my_amneties.created_at)

@@ -1,4 +1,4 @@
->>> City = __import__('C-City').City
+>>> City = __import__('City_class').City
 >>> import uuid
 >>> import datetime
 >>> import json
