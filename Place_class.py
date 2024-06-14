@@ -62,3 +62,6 @@ class Place:
             json.dump(Place.place_object_list, myFile, indent=4)
 
         Place.place_count -= 1
+
+    def get(self):
+        return self.__dict__

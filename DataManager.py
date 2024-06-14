@@ -1,44 +1,44 @@
 #!/usr/bin/python3
 import uuid
 import datetime
-import IPersistenceManager from IPersistenceManager
-from city import City
-from amenity import Amenities
-from review import Review
-from country import Country
-from place import Place
-from user import User
+from IPersistanceManager import IPersistenceManager
+from City_class import City
+from Amneties_class import Amneties
+from Review_class import Review
+from Country_class import Country
+from Place_class import Place
+from User_class import User
 
 class DataManager(IPersistenceManager):
-    def __init__(self, entity_id, entity_type, entity):
-        self.entity_id = uuid4()
-        self.entity_type = entity_type
-        self.entity = entity
+    #def __init__(self, entity_id, entity_type, entity):
+        #self.entity_id = uuid.uuid4()
+        #self.entity_type = type(entity)
+        #self.entity = entity
 
     def save(self, entity):
         if isinstance(entity, Place):
-            self.save_place(entity)
+             Place.save(entity)
         elif isinstance(entity, User):
-            self.save_user(entity)
+            User.save(entity)
         elif isinstance(entity, City):
-            self.save_city(entity)
-        elif isinstance(entity, Amenities):
-            self.save_amenities(entity)
+            City.save(entity)
+        elif isinstance(entity, Amneties):
+            Amneties.save(entity)
         elif isinstance(entity, Review):
-            self.save_review(entity)
+            Review.save(entity)
         elif isinstance(entity, Country):
-            self.save_country(entity)
+            Country.save(entity)
         else:
             raise TypeError("Type d'entité non pris en charge")
 
     def get(self, entity_id, entity_type):
         if entity_type == Place:
-            return self.get_place(entity_id)
+            Place.get(self)
         elif entity_type == User:
             return self.get_user(entity_id)
         elif entity_type == City:
             return self.get_city(entity_id)
-        elif entity_type == Amenities:
+        elif entity_type == Amneties:
             return self.get_amenities(entity_id)
         elif entity_type == Review:
             return self.get_review(entity_id)
@@ -54,7 +54,7 @@ class DataManager(IPersistenceManager):
             self.update_user(entity)
         elif isinstance(entity, City):
             self.update_city(entity)
-        elif isinstance(entity, Amenities):
+        elif isinstance(entity, Amneties):
             self.update_amenities(entity)
         elif isinstance(entity, Review):
             self.update_review(entity)
@@ -70,7 +70,7 @@ class DataManager(IPersistenceManager):
             self.delete_user(entity_id)
         elif entity_type == City:
             self.delete_city(entity_id)
-        elif entity_type == Amenities:
+        elif entity_type == Amneties:
             self.delete_amenities(entity_id)
         elif entity_type == Review:
             self.delete_review(entity_id)
@@ -78,3 +78,9 @@ class DataManager(IPersistenceManager):
             self.delete_country(entity_id)
         else:
             raise TypeError("Type d'entité non pris en charge")
+
+my_place = Place("HBNB", "Too small", "Random street", 0, 0, 5, 5, 100, 10, "Bordeaux")
+data_manager = DataManager()
+
+data = data_manager.save(my_place)
+print(data)

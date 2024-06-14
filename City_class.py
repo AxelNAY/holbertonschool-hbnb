@@ -5,7 +5,7 @@ import datetime
 import json
 
 
-Country = __import__('C-Country').Country
+Country = __import__('Country_class').Country
 
 
 class City(Country):

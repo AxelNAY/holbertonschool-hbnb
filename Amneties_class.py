@@ -58,9 +58,12 @@ class Amneties:
         self.__updated_at = str(datetime.datetime.today().
                                 replace(microsecond=0, second=0, minute=0))
 
-    def save(self):
+    def save(self, entity):
         """Saves the current amneties_object_list
         to the json file"""
         Amneties.amneties_object_list.append(self.__dict__)
         with open("Saving_files/Amneties.json", 'w') as myFile:
             json.dump(Amneties.amneties_object_list, myFile, indent=4)
+    
+    def get(self):
+        return self.__dict__
