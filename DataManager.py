@@ -81,8 +81,13 @@ class DataManager(IPersistenceManager):
 
 my_place = Place("HBNB", "Too small", "Random street", 0, 0, 5, 5, 100, 10, "Bordeaux")
 data_manager = DataManager()
+my_place2 = Place("HOTEL", "Too small", "Random street", 0, 0, 5, 5, 100, 10, "Bordeaux")
 
-data = data_manager.save(my_place)
+data_manager.save(my_place)
+data_manager.save(my_place2)
+print(Place.place_object_list)
 #print(data)
-data = data_manager.get('37ca632a-2a4b-11ef-b3de-93aed6173d47', 'Place')
-print(data)
+
+
+#data = data_manager.get('37ca632a-2a4b-11ef-b3de-93aed6173d47', 'Place')
+#print(data)

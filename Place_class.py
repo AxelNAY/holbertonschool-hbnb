@@ -67,4 +67,4 @@ class Place:
         for dictionary in Place.place_object_list:
             if dictionary['_Place__id'] == object_id:
                 return dictionary
-print(Place.place_object_list)
+#print(Place.place_object_list)
